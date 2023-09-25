@@ -3,11 +3,11 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder, InlineKeyboardButton
 from core.utils.callbackdata import MeetingInfo, SugarInfo, SyrupsInfo, DrinksInfo, BackstepInfo, ConfirmInfo
 
 
-def get_room_Ikeyboard(rooms: list, cb_data: list):
+def get_Ikeyboard(paths: list):
     CURRENT_LVL = 0
     keyboard_builder = InlineKeyboardBuilder()
-    for num, room in enumerate(rooms):
-        keyboard_builder.button(text=room, callback_data=MeetingInfo(num_room=room, data_room=cb_data[num], lvl=CURRENT_LVL))
+    for path in paths:
+        keyboard_builder.button(text=path, callback_data=path)
     keyboard_builder.adjust(1)
     return keyboard_builder.as_markup()
 

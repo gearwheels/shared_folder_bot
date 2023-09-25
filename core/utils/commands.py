@@ -1,5 +1,5 @@
 from aiogram import Bot
-from aiogram.types import BotCommand, BotCommandScopeDefault
+from aiogram.types import BotCommand, BotCommandScopeDefault, BotCommandScopeAllPrivateChats
 
 
 async def set_commands(bot: Bot):
@@ -9,4 +9,4 @@ async def set_commands(bot: Bot):
     for num, com in enumerate(strs_commands):
         commands.append(BotCommand(command=com, description=strs_description[num]))
 
-    await bot.set_my_commands(commands, BotCommandScopeDefault())
+    await bot.set_my_commands(commands, BotCommandScopeAllPrivateChats())
