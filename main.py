@@ -8,7 +8,9 @@ from aiogram import filters
 
 from core.settings import settings
 from core.utils.commands import set_commands
-from core.handlers.basic import get_start
+from core.handlers.basic import get_start, find_folder, get_help
+from core.utils.callbackdata.callbackdata import find_file, upload_file, cancel
+from core.utils.callbackdata.callbackdata import FolderInfo, FileInfo, CancelInfo
 
 
 async def start_bot(bot: Bot):
@@ -34,6 +36,12 @@ async def start():
 
 
     dp.message.register(get_start, filters.CommandStart())
+    dp.message.register(find_folder, Command(commands='find_folder'))
+    dp.message.register(get_help, Command(commands='help'))
+    
+    dp.callback_query.register(find_file, FolderInfo.filter())
+    dp.callback_query.register(upload_file, FileInfo.filter())
+    dp.callback_query.register(cancel, CancelInfo.filter())
 
     try:
         await dp.start_polling(bot)

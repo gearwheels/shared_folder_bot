@@ -12,16 +12,18 @@ def get_foldernames(folder_name: str):
     folder_name = "*" + folder_name + "*"
     for path in Path(dir_for_search).rglob(folder_name):
         if path.is_dir():
-            list_folders.append(Path.joinpath(path.parent,path.name))
-        # print(Path.joinpath(path.parent,path.name))
+            list_folders.append(str(Path.joinpath(path.parent,path.name)))
+        # print(str(Path.joinpath(path.parent,path.name)))
+
     return list_folders
 
 def get_all_filenames(folder_name: str):
     list_files = []
     for path in Path(folder_name).rglob():
         if path.is_file():
-            list_files.append(Path.joinpath(path.parent,path.name))
-        # print(Path.joinpath(path.parent,path.name))
+            list_files.append(str(Path.joinpath(path.parent,path.name)))
+        # print(str(Path.joinpath(path.parent,path.name)))
+        
     return list_files
 
 def creat_archive(folder_name: str):
