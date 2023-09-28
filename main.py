@@ -21,7 +21,6 @@ async def end_bot(bot: Bot):
     await bot.send_message(settings.bots.admin_id, text='Бот отключен.')
 
 
-
 async def start():
 
     logging.basicConfig(level=logging.INFO, 

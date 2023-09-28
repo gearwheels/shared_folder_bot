@@ -40,8 +40,6 @@ async def upload_file(call: CallbackQuery, bot: Bot, callback_data: FileInfo):
     root_folder = data_list[0]
     filename = data_list[1]
 
-    # document = FSInputFile()
-
     if filename == "download_all":
         await call.message.edit_text(SHUTDOWN_INLINE.format(root_folder.split('/')[-1]))
         async with ChatActionSender.upload_document(chat_id=call.message.chat.id, bot=bot):
@@ -56,16 +54,7 @@ async def upload_file(call: CallbackQuery, bot: Bot, callback_data: FileInfo):
             document = FSInputFile(filename)# отправить файл указаный по пути root_folder
             await bot.send_document(call.message.chat.id, document=document)
         
-
-    # list_files = []
-
-    # answer = ANSWER_OPEN_FOLDER.format(foldername)
-    
-    # list_files = get_all_filenames(path_folder)
-    # files_markup = get_Ikeyboard(list_files, folder=False)
-    
     await call.message.edit_text(SHUTDOWN_INLINE.format(filename))
-    # await call.message.answer(answer)
     await call.answer()
 
 async def cancel(call: CallbackQuery, bot: Bot, callback_data: FileInfo):

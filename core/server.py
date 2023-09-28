@@ -3,9 +3,7 @@ import asyncio
 import zipfile
 import os
 
-# from core.utils.data.paths import dir_for_search
-
-dir_for_search = "/home/dude/test"
+from core.utils.data.paths import dir_for_search
 
 
 def get_foldernames(folder_name: str):
@@ -14,19 +12,15 @@ def get_foldernames(folder_name: str):
     for path in Path(dir_for_search).rglob(folder_name):
         if path.is_dir():
             list_folders.append(str(Path.joinpath(path.parent,path.name)))
-        # print(str(Path.joinpath(path.parent,path.name)))
 
     return list_folders
 
 def get_all_filenames(folder_name: str):
     list_files = []
-    # for path in Path(folder_name).rglob():
     for root, dirs, files in os.walk(folder_name):
         for file in files:
             abs_path_file = os.path.join(root,file)
-            # if abs_path_file.is_file():
             list_files.append(str(abs_path_file))
-        # print(str(Path.joinpath(path.parent,path.name)))
         
     return list_files
 
@@ -60,14 +54,4 @@ async def del_archive(archive_path: str):
          print("ERROR: Удаляемый архив не существует. \nПуть - {}".format(archive_path))
     pass
 
-
-async def main():
-    list = get_foldernames(folder_name = "main_")
-    # print("list ", list)
-    path = creat_archive('/home/dude/test/main_papka', 2)
-    # await del_archive(path)
-
-
-if __name__ == "__main__":
-    asyncio.run(main())
 
