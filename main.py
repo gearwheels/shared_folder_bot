@@ -9,7 +9,7 @@ from aiogram import filters
 from core.settings import settings
 from core.utils.commands import set_commands
 from core.handlers.basic import get_start, find_folder, get_help
-from core.utils.callbackdata.callbackdata import find_file, upload_file, cancel
+from core.handlers.callbacks import find_file, upload_file, cancel
 from core.utils.callbackdata.callbackdata import FolderInfo, FileInfo, CancelInfo
 
 
