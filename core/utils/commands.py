@@ -3,8 +3,8 @@ from aiogram.types import BotCommand, BotCommandScopeDefault, BotCommandScopeAll
 
 
 async def set_commands(bot: Bot):
-    strs_commands = ['start', 'help', 'find_folder']
-    strs_description = ['Начало работы', 'Помощь', 'Найти папку по названию']
+    strs_commands = ['start', 'help', ]
+    strs_description = ['Начало работы', 'Помощь']
     commands = []
     for num, com in enumerate(strs_commands):
         commands.append(BotCommand(command=com, description=strs_description[num]))
